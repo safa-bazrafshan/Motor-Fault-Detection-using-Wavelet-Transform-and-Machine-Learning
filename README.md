@@ -1,57 +1,73 @@
-# Motor Fault Detection using Wavelet Transform and Machine Learning
+# 🔧 Motor Fault Detection using Wavelet Transform & Machine Learning
 
-This project demonstrates how to classify motor faults using synthetic signals, wavelet-based feature extraction, and machine learning.
-
-## 🔧 Tools & Technologies
-
-- Python
-- NumPy, Matplotlib, PyWavelets, Pandas
-- Scikit-learn (ML model training)
-- Wavelet Transform (feature extraction)
-- Signal Simulation (synthetic)
+This project demonstrates how wavelet transform and classical machine learning models can be used for early fault detection in electric motor signals. The goal is to extract robust time-frequency features and classify motor conditions (normal vs. faulty) from synthetic signals.
 
 ---
 
-## 📁 Project Structure
+## 📌 Project Overview
 
-motor_fault_wavelet_ml/ ├── src/ │   ├── step1_generate_signal.py        # Simulates synthetic normal and faulty signals │   ├── step2_wavelet_features.py       # Applies DWT and extracts features (energy, entropy) │   ├── step3_create_dataset.py         # Builds dataset from multiple signals │   ├── step4_train_model.py            # Trains and evaluates ML model (RandomForest) ├── motor_wavelet_dataset.csv           # Final dataset with labels ├── results/                            # Contains all plots & figures
-
----
-
-## 🧪 Results
-
-- Achieved 100% accuracy on binary classification (Normal vs Faulty)
-- Used DWT (db4) to extract multi-level energy and entropy
-- Visualized signals, wavelet coefficients, and confusion matrix
-
-<p align="center">
-  <img src="results/step4_confusion_matrix.png" alt="Confusion Matrix" width="300"/>
-</p>
+- **Signal Simulation**: Synthetic time-domain signals are generated to represent both healthy and faulty motor behaviors.
+- **Wavelet Feature Extraction**: Energy and entropy values are extracted from wavelet decomposition levels.
+- **Classification**: A Random Forest classifier is trained to distinguish between signal types.
+- **Noise Handling**: The robustness of the method is evaluated on noisy signals as well.
 
 ---
 
-## 📌 Conclusion
+## ✅ Completed Steps
 
-This simple workflow showed the power of wavelet-based features in classifying motor faults with high accuracy using classical ML models.
+### 🟢 Step 1 – Basic Signal Processing & Feature Extraction
+- Created synthetic signals (normal vs. faulty)
+- Applied `pywt` to extract wavelet features (Energy, Entropy)
+- Trained and evaluated a classifier (RandomForest)
+- Achieved **100% accuracy** on the simple dataset  
+- 📊 Confusion matrix and plots included  
+- 📄 Report: [`Step1_Report.pdf`](figures/Step1_Report.pdf)
+
+### 🟢 Step 2 – Noisy Signal Handling
+- Added Gaussian noise to both signal types
+- Extracted wavelet features from noisy signals
+- Observed feature differences under noise
+- Model retained **100% accuracy** even on noisy data  
+- 📊 Confusion matrix, signal plots
+- 📄 Report: [`Step2_Report.pdf`](figures/Step2_Report.pdf)
 
 ---
 
-## 🚀 Future Work
 
-- Replace synthetic signals with real-world motor data (current or vibration)
-- Add multiple fault types and multi-class classification
-- Explore deep learning models (CNN, LSTM) for feature learning
-- Real-time fault detection deployment
+## 🚀 How to Run
+
+1. Clone the repository  
+2. Set up a virtual environment and install dependencies:
+
+```bash
+pip install -r requirements.txt
+
+3.python src/step1_generate_signal.py
+python src/step2_wavelet_features.py
+...
+
+ ___
+
+🛠️ Tools & Libraries
+
+Python 3.10+
+
+NumPy
+
+PyWavelets (pywt)
+
+Scikit-learn
+
+Matplotlib / Seaborn
+
+Pandas
+
+
 
 ---
 
-## 👤 Author
+✍️ Author
 
-Safa Bazrafshan  
+Safa Bazrafshan
 📧 safa.bazrafshan@gmail.com
 
----
-
-## 📄 License
-
-This project is open-source and free to use.
